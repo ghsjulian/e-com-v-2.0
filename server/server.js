@@ -28,16 +28,12 @@ app.use(express.static(path.join(__dirname, "../public")));
 /*----------------------------> <---------------------------------*/
 // Requiring Database Config And create Connections
 // Start the express server here...
-const dbConnection = require("./configs/db.connection");
-app.listen(PORT, () => {
-    //  console.clear();
+const createConn = require("./configs/db.connection");
+
+app.listen(PORT, async () => {
+    console.clear();
+    await createConn();
     console.log("\n--------------------------------------------------+");
     console.log(`\n[+] Server Running   -  http://${HOST}:${PORT}     |`);
-    console.log(`\n[+] Database Connected Successfully               |`);
-    console.log(`\n[+] Backend Developer - Ghs Julian                |`);
-    console.log("\n--------------------------------------------------+\n\n");
+    console.log(`\n[+] Backend Developer - Ghs Julian                |\n`);
 });
-
-dbConnection().then((res)=>{
-    console.log(res)
-})
