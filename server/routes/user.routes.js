@@ -1,16 +1,16 @@
 const express = require("express");
 const router = express.Router();
 const isAuth = require("../auth/is.auth");
-const signupController = require("../controllers/signup.controller");
-const loginController = require("../controllers/login.controller");
-const getUserController = require("../controllers/get-user.controller");
-const verifyOTP = require("../controllers/verify-otp.controller");
-const resetPassword = require("../controllers/reset-password.controller");
-const updateProfilePic = require("../controllers/profile-pic.controller");
-const updatePersonalInfo = require("../controllers/edit-personal-info.controller");
-const changePassword = require("../controllers/change-password.controller");
-const userLogoutController = require("../controllers/user-logout.controller");
-const userDeleteController = require("../controllers/delete-account.controller");
+const signupController = require("../user-controllers/signup.controller");
+const loginController = require("../user-controllers/login.controller");
+const getUserController = require("../user-controllers/get-user.controller");
+const verifyOTP = require("../user-controllers/verify-otp.controller");
+const resetPassword = require("../user-controllers/reset-password.controller");
+const updateProfilePic = require("../user-controllers/profile-pic.controller");
+const updatePersonalInfo = require("../user-controllers/edit-personal-info.controller");
+const changePassword = require("../user-controllers/change-password.controller");
+const userLogoutController = require("../user-controllers/user-logout.controller");
+const userDeleteController = require("../user-controllers/delete-account.controller");
 
 router.post("/signup", signupController);
 router.post("/login", loginController);

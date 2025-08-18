@@ -2,7 +2,7 @@ const { decodeJWT } = require("../functions/jwt.config");
 
 const isAuth = async (req, res, next) => {
     try {
-        const cookie = req?.cookies?.authapp;
+        const cookie = req?.cookies?.ecomv2;
         if(!cookie || cookie === null) throw new Error("No Cookie Found")
         const data = decodeJWT(cookie)
         if(!data || !data?._id) throw new Error("Unauthorized Cookie And Token")
