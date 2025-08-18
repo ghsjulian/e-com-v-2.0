@@ -26,6 +26,10 @@ app.use(
 app.use(express.static(path.join(__dirname, "../public")));
 
 /*----------------------------> <---------------------------------*/
+// Define API Endpoints
+const userRoutes = require("./routes/user.routes");
+app.use("/api/v1/user", userRoutes);
+/*----------------------------> <---------------------------------*/
 // Requiring Database Config And create Connections
 // Start the express server here...
 const createConn = require("./configs/db.connection");
