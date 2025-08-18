@@ -16,7 +16,8 @@ const loginController = async (req, res) => {
 
         const isMatched = await compareHashed(password, existUser?.password);
         if (!isMatched) throw new Error("Invalid Email Address Or Password");
-
+        
+        if (existUser?.role === "ADMIN"){
         const token = encodeJWT({
             _id: existUser._id,
             name: existUser.name,
@@ -30,6 +31,9 @@ const loginController = async (req, res) => {
             user,
             message: "Admin Logged In Successfully"
         });
+        } else {
+            throw new Error("Invalid Admin Credentials")
+        }
     } catch (error) {
         return res.status(403).json({
             success: false,

@@ -16,7 +16,9 @@ const loginController = async (req, res) => {
             
         const isMatched = await compareHashed(password, existUser?.password);
         if (!isMatched) throw new Error("Invalid Email Address Or Password");
-
+        
+        if (existUser?.role !== "USER") throw new Error("Invalid User")
+        
         const token = encodeJWT({
             _id: existUser._id,
             name: existUser.name,

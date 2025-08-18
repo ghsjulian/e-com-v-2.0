@@ -2,14 +2,12 @@ const userModel = require("../models/user.model");
 const { createHash } = require("../functions/password.hash");
 const { encodeJWT } = require("../functions/jwt.config");
 const setCookie = require("../functions/set.cookie");
-const sendMail = require("../configs/mailer.config")
-
+const sendMail = require("../configs/mailer.config");
 
 const signupController = async (req, res) => {
     try {
-        
-        const { name, email, password } = req.body;
-        if (!name && !email && !password)
+        const { name, phone, email, password } = req.body;
+        if (!name && !email && !phone && !password)
             throw new Error("All fields are required");
         const existUser = await userModel.findOne({ email: email.trim() });
         if (existUser) throw new Error("User Already Registered");
@@ -17,14 +15,17 @@ const signupController = async (req, res) => {
         const newUser = await new userModel({
             name,
             email,
-            avatar: "/images/avatar.png",
+            phone,
+            avatar: "/images/customer.png",
             password: hash
         });
         const token = encodeJWT({ _id: newUser._id, name, email });
         setCookie(res, token);
         await newUser.save();
         let otp = Math.floor(Math.random() * (900000 - 100000)) + 100000;
-        await sendMail(name,email,otp)
+        // This is commented because i'm in offline
+        // And offline can't send emails
+        // await sendMail(name, email, otp);
         const user = await userModel.findOne({ email }).select("-password");
         return res.status(201).json({
             success: true,
