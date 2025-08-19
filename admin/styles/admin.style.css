@@ -1,0 +1,240 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 90%;
+}
+:root {
+    --admin-header: #004b42;
+    --admin-sidebar: #002b34;
+    --white: #ffffff;
+    --yellow: rgb(255, 245, 46);
+    --page: #b9c1c8;
+}
+body {
+    background: var(--page);
+    scroll-behavior: smooth;
+}
+.admin-header {
+    position: fixed;
+    width: 75%;
+    left: 25%;
+    right: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--admin-header);
+    padding: 0.8rem 1rem;
+    z-index: 9000;
+}
+.admin-header h3 {
+    color: #fffa29;
+    font-weight: 900;
+    font-size: 23px;
+}
+.admin-header strong {
+    color: #fe35ff;
+}
+.admin-header span {
+    color: var(--white);
+}
+.admin-header .admin-header-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+}
+.admin-header-links a {
+    color: var(--white);
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 23px;
+    border-radius: 50%;
+    box-shadow: none;
+    position: relative;
+}
+.admin-header-links .admin-nav {
+    display: none;
+}
+/*--> Admin Sidebar Styling <--*/
+.admin-sidebar {
+    position: fixed;
+    width: 25%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background: var(--admin-sidebar);
+}
+
+.admin-sidebar,
+.admin-open-sidebar {
+    top: 0;
+    padding: 1.3rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    z-index: 9000000;
+}
+.admin-sidebar .active,
+.admin-open-sidebar .active{
+    background: rgba(0,0,0,0.552);
+}
+
+.admin-open-sidebar {
+    position: fixed;
+    width: 65%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    transition: 0.3s ease-in;
+    animation: sidebar 0.3s linear;
+    background: var(--admin-sidebar);
+}
+
+.admin-sidebar h3,
+.admin-open-sidebar h3 {
+    color: var(--yellow);
+    font-weight: 500;
+    font-size: 23px;
+    margin: 0.3rem 0;
+    padding: 0 0.2rem;
+}
+
+.admin-sidebar .admin-menu-list,
+.admin-open-sidebar .admin-menu-list {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0.6rem 0;
+    border-top: 2px solid var(--white);
+}
+.admin-menu-list a {
+    text-decoration: none;
+    margin: 0.4rem 0;
+    padding: 0.5rem 0.2rem;
+    font-size: 16px;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    transition: 0.3s ease-in;
+    border-radius: 5px;
+    border: 0.1px solid var(--white);
+}
+.admin-menu-list a:hover {
+    background: rgba(0, 15, 28, 0.552);
+}
+.admin-menu-list a .icon {
+    font-size: 20px;
+    font-weight: 800;
+}
+.admin-menu-list a span {
+    margin: 0 0.5rem;
+    font-weight: 800;
+}
+.float-area {
+    position: relative;
+    width: 100%;
+}
+.float-area .notification {
+    position: fixed;
+    top: 3.5rem;
+    right: 2.3rem;
+    width: 30%;
+    height: 60%;
+    background: #000f1c;
+    border-radius: 5px;
+    animation: noti 0.3s linear;
+}
+.float-area .notification {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    text-align: justify;
+    padding: 1rem 0.5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 900000;
+}
+.float-area .notification a {
+    margin: 0.4rem 0;
+    padding: 0.5rem 0.3rem;
+    text-decoration: none;
+    font-size: 16px;
+    color: var(--white);
+    line-height: 1.5rem;
+    border-bottom: 0.1px solid var(--white);
+}
+
+/*--> Media Query Responsive <--*/
+@media (max-width: 668px) {
+    .admin-header {
+        width: 100%;
+        left: 0;
+    }
+    .admin-header-links .bag {
+        display: none;
+    }
+    .admin-header-links .admin-nav {
+        display: block;
+        outline: none;
+        border: none;
+    }
+    .admin-sidebar {
+        width: 0;
+        left: -65%;
+    }
+    .admin-close-nav {
+        position: fixed;
+        width: 35%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        animation: closenav 3.5s linear;
+        background: rgba(53, 54, 54, 0.472);
+        z-index: 90000000;
+    }
+    .float-area .notification {
+        position: fixed;
+        top: 3.7rem;
+        right: 1rem;
+        width: 80%;
+        height: 80%;
+        background: #000f1c;
+        border-radius: 5px;
+        z-index: 900000;
+        animation: noti 0.3s linear;
+    }
+}
+/*--> Creating Animation <--*/
+@keyframes sidebar {
+    from {
+        left: -65%;
+    }
+    to {
+        left: 0;
+    }
+}
+@keyframes closenav {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes noti {
+    from {
+        height: 0;
+        opacity: 0.7;
+    }
+    to {
+        height: 80%;
+        opacity: 1;
+    }
+}
