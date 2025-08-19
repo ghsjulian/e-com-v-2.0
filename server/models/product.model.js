@@ -7,8 +7,8 @@ const productSchema = new mongoose.Schema(
             required: true,
         },
         product_info : {
-            type: Array,
-            default : []
+            type: Object,
+            default : {}
         },
         product_images : {
             type : Array,

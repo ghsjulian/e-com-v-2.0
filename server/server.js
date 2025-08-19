@@ -23,7 +23,7 @@ app.use(
     })
 );
 // Serve static files from the public directory
-app.use(express.static(path.join(__dirname, "../public")));
+app.use(express.static(path.join(__dirname, "../products")));
 
 /*----------------------------> <---------------------------------*/
 // Define API Endpoints
@@ -40,6 +40,6 @@ app.listen(PORT, async () => {
     console.clear();
     await createConn();
     console.log("\n--------------------------------------------------+");
-    console.log(`\n[+] Server Running   -  http://${HOST}:${PORT}     |`);
+    console.log(`\n[+] Server Running   -    ${HOST} |`);
     console.log(`\n[+] Backend Developer - Ghs Julian                |\n`);
 });
