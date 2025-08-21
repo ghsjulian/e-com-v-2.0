@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { BsCloudUpload } from "react-icons/bs";
-import useAddProduct from "../hooks/useAddProduct"
+import useAddProduct from "../hooks/useAddProduct";
 
 const AddProduct = () => {
     const [error, setError] = useState(false);
@@ -8,15 +8,13 @@ const AddProduct = () => {
     const [products, setProducts] = useState({
         product_images: [],
         product_title: "",
-        product_price: "",
-        product_quantity: "",
         product_collection: "",
         product_category: "",
         product_desc: ""
     });
     const [images, setImages] = useState([]);
-    const {isLoading,addProduct} = useAddProduct()
-    
+    const { isLoading, addProduct } = useAddProduct();
+
     // Function to add a new image
     const addImage = newImage => {
         setImages(prevImages => [...prevImages, newImage]);
@@ -46,16 +44,12 @@ const AddProduct = () => {
     const validateInputs = () => {
         const {
             product_title,
-            product_price,
-            product_quantity,
             product_collection,
             product_category,
             product_desc
         } = products;
         if (
             !product_title ||
-            !product_price ||
-            !product_quantity ||
             !product_collection ||
             !product_category ||
             !product_desc
@@ -103,8 +97,6 @@ const AddProduct = () => {
                 setProducts({
                     product_images: [],
                     product_title: "",
-                    product_price: "",
-                    product_quantity: "",
                     product_collection: "",
                     product_category: "",
                     product_desc: ""
@@ -172,25 +164,6 @@ const AddProduct = () => {
                     value={products.product_title}
                     onChange={handleChange}
                 />
-                <input
-                    type="text"
-                    name="product_price"
-                    placeholder="Enter Product Price"
-                    value={products.product_price}
-                    onChange={handleChange}
-                />
-                <select
-                    name="product_quantity"
-                    value={products.product_quantity}
-                    onChange={handleChange}
-                >
-                    <option value="">Select Quantity</option>
-                    {[...Array(10).keys()].map(i => (
-                        <option key={i + 1} value={i + 1}>
-                            {i + 1}
-                        </option>
-                    ))}
-                </select>
                 <select
                     name="product_collection"
                     value={products.product_collection}

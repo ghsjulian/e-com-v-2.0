@@ -23,7 +23,9 @@ app.use(
     })
 );
 // Serve static files from the public directory
+app.use("/products", express.static(path.join(__dirname, "products")));
 app.use(express.static(path.join(__dirname, "../products")));
+
 
 /*----------------------------> <---------------------------------*/
 // Define API Endpoints

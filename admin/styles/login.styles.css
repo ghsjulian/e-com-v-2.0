@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    --login-bg: #b9c1c8;
+    --blue: #006ccb;
+    --icon: #4d535a;
+    --green: #004b42;
+    --white: #ffffff;
+}
+body {
+    background: var(--login-bg);
+    scroll-behavior: smooth;
+}
+
+.full-page {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.full-page .login-container {
+    width: 30%;
+    margin: 0.5rem auto;
+    padding: 1rem 0.5rem;
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+.login-container h3 {
+    color: var(--green);
+    font-weight: 600;
+    margin: 0.5rem auto;
+    font-size: 20px;
+}
+.login-container .error {
+    width: 90%;
+    border: 0.1px solid rgb(53, 6, 0);
+    background: rgb(200, 42, 0);
+    color: var(--white);
+    font-weight: 600;
+    text-align: center;
+    margin: 0.5rem auto;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+.login-container .success {
+    width: 90%;
+    border: 0.1px solid rgb(0, 53, 7);
+    background: rgb(0, 154, 42);
+    color: var(--white);
+    font-weight: 600;
+    text-align: center;
+    margin: 0.5rem auto;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+.login-container input {
+    width: 90%;
+    outline: none;
+    border: 1px solid var(--green);
+    color: var(--icon);
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 0.8rem 1rem;
+    margin: 0.7rem auto;
+    background: transparent;
+}
+.login-container button {
+    width: 90%;
+    outline: none;
+    border: none;
+    background: var(--green);
+    color: var(--white);
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 0.8rem 1rem;
+    margin: 0.5rem auto;
+    transition: 0.3s ease-in;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-container button:hover {
+    background: rgb(0, 72, 22);
+}
+.login-container button .loader {
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    background: transparent;
+    margin: 0 0.5rem;
+    border-left: 3px solid currentColor;
+    border-right: 3px solid currentColor;
+    border-top: 3px solid currentColor;
+    border-bottom: 3px solid transparent;
+    animation: loader 0.5s linear infinite;
+}
+.login-container button span {
+    margin: 0 0.5rem;
+}
+.login-container a {
+    width: 90%;
+    outline: none;
+    border: none;
+    background: rgb(0,120,154);
+    color: var(--white);
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 0.8rem 1rem;
+    margin: 0.8rem auto;
+    transition: 0.3s ease-in;
+    display: flex;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+}
+/*--> Responsive Styles For Mobile <--*/
+@media (max-width: 668px) {
+    .full-page .login-container {
+        width: 80%;
+    }
+}
+/*--> Creating Loading Animation <--*/
+@keyframes loader {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
