@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --app-header: #eafaf3;
+    --app-logo: #004f3b;
+    --app-logo-span: #d72f00;
+    --app-aside: #d5f5f5;
+    --app-container: #ffffff;
+    --txt-color: #414d4b;
+    --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.header {
+    width: 80%;
+    position: sticky;
+    top: 0;
+    right: 0;
+    left: 20%;
+    padding: 0.5rem 1rem;
+    background: var(--app-header);
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header .app-logo {
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--app-logo);
+}
+.app-logo span {
+    color: var(--app-logo-span);
+}
+.header .nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 1rem;
+}
+.nav-links a {
+    font-weight: 500;
+    color: var(--txt-color);
+    text-decoration: none;
+}
+.nav-links .menu-btn {
+    display: none;
+}
+.side-bar {
+    position: fixed;
+    width: 20%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: var(--app-aside);
+    box-shadow: var(--shadow);
+    transition: left 0.3s ease;
+    z-index: 999;
+}
+.side-bar ul {
+    list-style: none;
+}
+.side-bar ul li {
+    padding: 10px 15px;
+}
+.side-bar ul li a {
+    color: var(--txt-color);
+    text-decoration: none;
+    display: block;
+    padding: 0.6rem 5px;
+    border-radius: 5px;
+    font-weight: 700;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 5px;
+}
+.side-bar ul li a:hover {
+    background-color: #001213;
+}
+.side-bar ul li .active {
+    background-color: #001213;
+}
+/* Toggle for mobile */
+#menu-toggle {
+    display: none;
+}
+.menu-icon {
+    display: block;
+    cursor: pointer;
+    font-size: 1.5em;
+}
+#menu-toggle:checked ~ .side-bar {
+    left: 0;
+    width: 70%;
+}
+
+/* Main content */
+.main {
+    position: relative;
+    left: 0;
+    flex: 1;
+    margin-top: 0.5rem;
+    padding: 1.5rem 0.5rem;
+    transition: margin-left 0.3s ease;
+    overflow-y: auto;
+}
+.hero-section {
+    width: 100%;
+    border-radius: 5px;
+    background: var(--app-container);
+}
+/*-->Responsive Design<--*/
+@media (max-width: 768px) {
+    .header {
+        width: 100%;
+        left: 0;
+    }
+    .nav-links .menu-btn {
+        display: block;
+    }
+    .side-bar {
+        left: -70%;
+    }
+}

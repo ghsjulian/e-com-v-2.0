@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
     cors({
-        origin: [CLIENT, "*"],
+        origin: [CLIENT, "https://a316bba24dba.ngrok-free.app"],
         methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
         allowedHeaders: ["Content-Type", "Authorization"],
         credentials: true,
@@ -26,7 +26,12 @@ app.use(
 app.use("/products", express.static(path.join(__dirname, "products")));
 app.use(express.static(path.join(__dirname, "../products")));
 
-
+/*Main Page App After Building*/ 
+app.use("/dist", express.static(path.join(__dirname, "../dist/")));
+app.use(express.static(path.join(__dirname, "../dist/")));
+app.get("/",(req,res)=>{
+    res.sendFile(path.join(__dirname,"../dist/index.html"))
+})
 /*----------------------------> <---------------------------------*/
 // Define API Endpoints
 const userRoutes = require("./routes/user.routes");

@@ -6,7 +6,10 @@ const getAllProducts = async (req,res)=>{
         if (!products || products?.length === 0) throw new Error("No products found in the server")
         return res.status(200).json(products)
     } catch (error) {
-        return res.status(403).json([])
+        return res.status(403).json({
+            success : false,
+            message : error.message || "Unexpected Server Error - 505"
+        })
     }
 }
 
